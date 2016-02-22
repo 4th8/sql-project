@@ -1,109 +1,131 @@
 <!DOCTYPE HTML>
-<html>
+<html ng-app=chatApp>
 
 <head>
-  <title>UMW RC Club</title>
-  <meta name="description" content="website description" />
-  <meta name="keywords" content="website keywords, website keywords" />
-  <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
-  <link rel="stylesheet" type="text/css" href="static/css/style.css" />
-  <!-- modernizr enables HTML5 elements and feature detects -->
-  <script type="text/javascript" src="static/js/modernizr-1.5.min.js"></script>
+	<title>Nathan and Heathers Wedding</title>
+	<title1>{{username}}</title1>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,300italic,600|Source+Code+Pro" rel="stylesheet" />
+	<!--[if lte IE 8]><script src="html5shiv.js" type="text/javascript"></script><![endif]-->
+	<script src="https://code.jquery.com/jquery-1.10.1.min.js"></script>
+	<script src="static/js/jquery.dropotron.min.js"></script>
+	<script src="static/js/skel.min.js">
+		{
+			prefix: 'static/css/style',
+			preloadStyleSheets: true,
+			resetCSS: true,
+			boxModel: 'border',
+			grid: {
+				gutters: 30
+			},
+			breakpoints: {
+				wide: {
+					range: '1200-',
+					containers: 1140,
+					grid: {
+						gutters: 50
+					}
+				},
+				narrow: {
+					range: '481-1199',
+					containers: 960
+				},
+				mobile: {
+					range: '-480',
+					containers: 'fluid',
+					lockViewport: true,
+					grid: {
+						collapse: true
+					}
+				}
+			}
+		}
+	</script>
+	<script>
+		$(function() {
+
+			// Note: make sure you call dropotron on the top level <ul>
+			$('#main-nav > ul').dropotron({
+				offsetY: -10 // Nudge up submenus by 10px to account for padding
+			});
+
+		});
+	</script>
+	<script>
+		// DOM ready
+		$(function() {
+
+			// Create the dropdown base
+			$("<select />").appendTo("nav");
+
+			// Create default option "Go to..."
+			$("<option />", {
+				"selected": "selected",
+				"value": "",
+				"text": "Menu"
+			}).appendTo("nav select");
+
+			// Populate dropdown with menu items
+			$("nav a").each(function() {
+				var el = $(this);
+				$("<option />", {
+					"value": el.attr("href"),
+					"text": el.text()
+				}).appendTo("nav select");
+			});
+
+			// To make dropdown actually work
+			// To make more unobtrusive: http://css-tricks.com/4064-unobtrusive-page-changer/
+			$("nav select").change(function() {
+				window.location = $(this).find("option:selected").val();
+			});
+
+		});
+	</script>
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+	<script type="text/javascript" src="Https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.4.4/socket.io.js"></script>
+	<script src="static/js/controler.js"></script>
 </head>
 
 <body>
-  <div id="main">
-    <header>
-      <div id="logo">
-        <div id="logo_text">
-          <!-- class="logo_colour", allows you to change the colour of the text -->
-          <h1><a href="index.html">UMW<span class="logo_colour"> RC Club</span></a></h1>
-          <h2>The World of Flight</h2>
-        </div>
-      </div>
-      <nav>
-        <ul class="sf-menu" id="nav">
-          <li class="selected"><a href="index.html">Home</a></li>
-          <li><a href="examples.html">Examples</a></li>
-          <li><a href="page.html">A Page</a></li>
-          <li><a href="another_page.html">Another Page</a></li>
-          <li><a href="#">Example Drop Down</a>
-            <ul>
-              <li><a href="#">Drop Down One</a></li>
-              <li><a href="#">Drop Down Two</a>
-                <ul>
-                  <li><a href="#">Sub Drop Down One</a></li>
-                  <li><a href="#">Sub Drop Down Two</a></li>
-                  <li><a href="#">Sub Drop Down Three</a></li>
-                  <li><a href="#">Sub Drop Down Four</a></li>
-                  <li><a href="#">Sub Drop Down Five</a></li>
-                </ul>
-              </li>
-              <li><a href="#">Drop Down Three</a></li>
-              <li><a href="#">Drop Down Four</a></li>
-              <li><a href="#">Drop Down Five</a></li>
-            </ul>
-          </li>
-          <li><a href="contact.html">Contact Us</a></li>
-        </ul>
-      </nav>
-    </header>
-  <div id="site_content">
-      <ul id="images">
-        <li><img src="static/images/1.jpg" width="600" height="300" alt="seascape_one" /></li>
-        <li><img src="static/images/2.jpg" width="600" height="300" alt="seascape_two" /></li>
-        <li><img src="static/images/3.jpg" width="600" height="300" alt="seascape_three" /></li>
-        <li><img src="static/images/4.jpg" width="600" height="300" alt="seascape_four" /></li>
-        <li><img src="static/images/5.jpg" width="600" height="300" alt="seascape_five" /></li>
-        <li><img src="static/images/6.jpg" width="600" height="300" alt="seascape_seascape" /></li>
-      </ul>
-       <div id="sidebar_container">
-        <div class="sidebar">
-          <h3>Latest News</h3>
-          <h4>Don't do this at home</h4>
-          <h5>January 1st, 2016</h5>
-          <p>Michael Hall, UMW Chief of Police reminds us not to fly copters or planes between the columns of buildings.<br /><a href="#">Read more</a></p>
-          <h4>Reminder</h4>
-          <h5>December 6th, 2015</h5>
-          <p>Access to our Educational Flight Range (EFR) is between 8am and 4pm ONLY!</p>
-        </div>
-      </div>
-      
-      <div class="content">
-      
-      {%block content %}{% endblock %}
-      
-      </div>
-    </div>
-    <footer>
-      <p>Copyright &copy; CSS3_seascape_two | <a href="http://www.css3templates.co.uk">design from css3templates.co.uk</a></p>
-    </footer>
-  </div>
-  <p>&nbsp;</p>
-  <!-- javascript at the bottom for fast page loading -->
-  <script type="text/javascript" src="static/js/jquery.js"></script>
-  <script type="text/javascript" src="static/js/jquery.easing-sooper.js"></script>
-  <script type="text/javascript" src="static/js/jquery.sooperfish.js"></script>
-  <script type="text/javascript" src="static/js/jquery.kwicks-1.5.1.js"></script>
-  <script type="text/javascript">
-    $(document).ready(function() {
-      $('#images').kwicks({
-        max : 600,
-        spacing : 2
-      });
-      $('ul.sf-menu').sooperfish();
-    });
-  </script>
-</body>
-</html>
+	<div id="header_container">
+		<div class="container">
+			<!-- Header -->
+			<div id="header" class="row">
+				<div class="4u">
+					<div class="box">
+						<h1><a href="index.html">Nathan and Heathers Wedding</a></h1>
+					</div>
+				</div>
 
-      
-      
-      
-      
-      
-      
-      
-    
-    
-    
+				<nav id="main-nav" class="8u">
+					<ul>
+						<li><a class="active" href="/">Home</a></li>
+						<li><a href="bridal">Bridal Party</a></li>
+						<li><a href="countdown">Countdown</a></li>
+						<li><a href='registry'>Registry</a></li>
+						<li><a href='rsvp'>RSVP</a></li>
+						<li><a href='chat'>Chat</a></li>
+						<li><a href='login'>Login</a></li>
+					</ul>
+				</nav>
+			</div>
+		</div>
+	</div>
+
+
+	<div id="site_content">
+		{% block content %}{% endblock %}
+	</div>
+
+	<div class="container">
+		<!-- Footer -->
+		<footer>
+			<p><img src="static/images/twitter.png" alt="twitter" />&nbsp;<img src="static/images/facebook.png" alt="facebook" />&nbsp;<img src="static/images/rss.png" alt="rss" /></p>
+			<p><a href="/">Home</a> | <a href="bridal">Bridal Party</a> <a href="countdown">Countdown</a> <a href='regrestery'>Registry</a><a href='rsvp'>RSVP</a></p>
+			<p>Copyright &copy; CSS3_snow | <a href="http://fotogrph.com/">Images</a> | <a href="http://skeljs.org/">skel.js</a> | <a href="http://www.css3templates.co.uk">design from css3templates.co.uk</a></p>
+		</footer>
+	</div>
+</body>
+
+</html>

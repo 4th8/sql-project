@@ -1,0 +1,19 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="container">	
+	<!-- Features -->
+	<div class="row">
+		<section class="6u">
+			<h1>Days Remaining!!!!</h1>
+			<p>The wedding will take place on {{date.dayOfWeek}} {{date.month}} {{date.day}} {{date.year}}.</p>
+			{% if past %}
+			<p>It went well.</p>
+			{% else %}
+			<p>That is only {{dayz}} days away!</p>
+			{% endif %}
+		</section>
+		
+	</div>
+</div>
+{% endblock %}

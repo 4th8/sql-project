@@ -1,0 +1,26 @@
+{% extends "layout.html" %} {% block content %}
+<h1><center>Create a new account.</center></h1>
+<div class="container">
+    <form method = 'POST' action='/newaccount'>
+        <center>Username:</center>
+        <center>
+            <input type="text" name="user" size="14"/>
+        </center>
+        <center>Password:</center>
+        <center>
+            <input type="text" name="password" size="14"/>
+        </center>
+        <center>
+            <input type="submit" value='Submit'>
+        </center>
+
+    </form>
+    <p><center>{{responseText}}</center></p>
+    <br />
+
+</div>
+<p>
+    <center>If you  already have a login you can create one <a class="active" href="/login">here</a></center>
+</p>
+
+{% endblock %}

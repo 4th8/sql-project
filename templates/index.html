@@ -1,10 +1,20 @@
 {% extends "layout.html" %}
 
 {% block content %}
- <h1>Welcome to the UMW R/C club</h1>
-        <p>Our current club president Chris Romo</p>
-        <p>The next build your own workshop is 20 January at 2pm where we will be building FliteTest's Easy Flyer. The cost is $15</p>
-
-        <p>Join us on the quad every Wednesday night at 6pm to fly quadcopters and R/C planes</p>
+<div class="container">	
+	<!-- Features -->
+	<div class="row">
+		<section class="6u">
+			<h1>Welcome to the webpage for the wedding of Nathan and Heather.</h1>
+			{% if past %}
+			<p>The wedding has already taken place.  Ms. Heather Burgess is now Mrs. Heather Woodhead</p>
+			{% else %}
+			<p>The wedding will take place on {{date.month}} {{date.day}}, {{date.year}}. At Saint Mary's Catholic Church. All are welcome to the ceremony but the reception is by invitation only. The ceremony will begin at 1400 and will last tell about 1530. The reception will take place at 1600 at the <a href<="http://www.innattheoldesilkmill.com/">Inn at the Old Silk Mill</a>. Visitors from out of town please visit thier website to book rooms for the night.</p>
+			{% endif %}		
+		</section>
+		<section class="6u">
+			<a href="#" class="image" ><img src="static/images/HeatherAndNathan.jpg" alt="image"/></a>
+			</section>					
+	</div>
+</div>
 {% endblock %}
-

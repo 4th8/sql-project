@@ -1,0 +1,46 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="container">	
+	<!-- Features -->
+	<div class="row">
+		<section class="6u">
+			<h1>People who are going to be there.</h1>
+			<table>
+				<th>Name</th>
+				{% for guest in guests %}
+				<tr>
+					<td>{{guest.name}}</td>
+				</tr>
+				{% endfor %}
+			</table>
+			<h1>Are you coming?</h1>
+			<p>If you are please let us know by filling out this form.</p>
+			<form method="POST" action="/rsvp">
+			<table>
+				<tr><td>Name</td><td><input type="text" name="name"/></td></tr>
+				<tr><td>Phone</td><td><input type="text" name="phone"/></td></tr>
+				<tr></tr><td>Address</td><td><input type="text" name="address"/></td></tr>
+				<tr><td>Number of Guests</td>
+				<td><select name='num'>
+					<option>1</option>
+					<option>2</option>
+					<option>3</option>
+					<option>4</option>
+					<option>5</option>
+					<option>6</option>
+					<option>7</option>
+					<option>8</option>
+					<option>9</option>
+					<option>10</option>
+					<option>11</option>
+					<option>12</option>
+				</select></td></tr>
+			</table>
+				<input type="submit" value="Submit"/>
+			</form>
+		</section>
+		
+	</div>
+</div>
+{% endblock %}

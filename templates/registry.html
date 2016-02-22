@@ -1,0 +1,19 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="container">	
+	<!-- Features -->
+	<div class="row">
+		<section class="6u">
+			<h1>Registry</h1>
+			<h2>Things that Nathan wants.</h2>
+			{% for want in iwant %}
+			<a href='{{want}}'>{{want}}</a>
+			{% endfor %}
+			<h2>Things Heather wants.</h2>
+			<p>Heather is regestered <a href='https://www.blueprintregistry.com/registry/HeatherandNathan09.03.16'>with Blueprint.</a></p>
+		</section>
+		
+	</div>
+</div>
+{% endblock %}

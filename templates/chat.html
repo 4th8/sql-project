@@ -1,0 +1,46 @@
+{% extends "layout.html" %} {% block content %}
+<div class="wrapper" ng-app=chatApp ng-controller='chatcontroller'>
+	<div class="sidebar" id="roompane">
+		<h1>Rooms</h1>
+		<form ng-submit='joinRoom()'>
+		<div class="scroll" id="roomlist">
+			<p ng-repeat='room in rooms'>
+				<input type="button" value=room></b></b>&nbsp;
+		</div>
+		</form>
+		<form ng-submit='createNewRoom()'>
+			<input type="text" id=roomname ng-model="roomname" name="roomname" size="30" placeholder="Enter the name of a new room.">
+			<input type="submit" value="Send">
+		</form>
+
+
+	</div>
+	<center>
+
+		<header>
+			<h1>Chat</h1>
+			<div class="scroll" id="msgpane">
+				<p ng-repeat='msg in messages'>
+					<b ng-bind="msg[0]"></b></b>:&nbsp;
+					<span ng-bind='msg[1]'></span>
+			</div>
+			<form ng-submit='sendMessage()'>
+				<input type="text" id='message' ng-model='message' name='message' size="30" placeholder="Enter a message.">
+				<input type="submit" value="Send">
+			</form>
+			<p></p>
+			<p></p>
+			<h1>Search Results</h1>
+			<div class="scroll" id="searchpane">
+				<p ng-repeat='result in results'>
+					<b ng-bind="result[0]"></b></b>:&nbsp;
+					<span ng-bind='result[1]'></span>
+			</div>
+			<form ng-submit='searchSend()'>
+				<input type="text" name="search" ng-model='search' name='search' size="30" placeholder='Search' />
+				<input type="submit" value="Submit" />
+			</form>
+		</header>
+</div>
+</center>
+{% endblock %}

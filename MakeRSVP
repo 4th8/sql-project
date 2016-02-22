@@ -1,0 +1,3 @@
+\c rsvplist;
+
+create table list(Name text, Phone text, Address text, NumberofGuests integer);
